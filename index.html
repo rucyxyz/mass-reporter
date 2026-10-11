@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discord Mass Reporter 2025</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Discord Mass Reporter 2025</h1>
+        </header>
+
+        <div class="content">
+            <div class="form-section">
+                <h2>設定</h2>
+                <div class="form-group">
+                    <label for="tokens">トークン（改行区切り）</label>
+                    <textarea id="tokens" placeholder="ここにDiscordトークンを1行ずつ貼り付け"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="reportType">通報対象</label>
+                    <select id="reportType">
+                        <option value="user">ユーザー</option>
+                        <option value="guild">サーバー</option>
+                        <option value="message">メッセージ</option>
+                    </select>
+                </div>
+
+                <div class="form-group" id="targetGroup">
+                    <label for="targetId">ターゲットID</label>
+                    <input type="text" id="targetId" placeholder="ユーザーID or サーバーID">
+                </div>
+
+                <div id="messageFields" style="display:none;">
+                    <div class="form-group">
+                        <label for="channelId">チャンネルID</label>
+                        <input type="text" id="channelId" placeholder="メッセージがあるチャンネルID">
+                    </div>
+                    <div class="form-group">
+                        <label for="messageId">メッセージID</label>
+                        <input type="text" id="messageId" placeholder="通報したいメッセージID">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="amount">1トークンあたりの通報回数</label>
+                    <input type="number" id="amount" value="5" min="1" max="30">
+                </div>
+
+                <div class="form-group">
+                    <label for="reason">通報理由（数値ID）</label>
+                    <input type="text" id="reason" value="2" placeholder="例: 2=嫌がらせ, 3=ヘイト, 7=違法コンテンツ">
+                </div>
+
+                <button id="startBtn" class="report-btn">通報開始</button>
+            </div>
+
+            <div class="log-section">
+                <h2>ログ</h2>
+                <div id="log"></div>
+                <div class="stats">
+                    <div class="stat-item"><span class="stat-label">成功</span><span id="success" class="stat-value">0</span></div>
+                    <div class="stat-item"><span class="stat-label">失敗</span><span id="fail" class="stat-value">0</span></div>
+                    <div class="stat-item"><span class="stat-label">進行</span><span id="progress" class="stat-value">0/0</span></div>
+                </div>
+                <div class="progress-bar"><div id="bar"></div></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
